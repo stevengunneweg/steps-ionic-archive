@@ -1,5 +1,5 @@
 {
-	"ImportPath": "github.com/bitrise-community/steps-ionic-archive",
+	"ImportPath": "github.com/stevengunneweg/steps-ionic-archive",
 	"GoVersion": "go1.9",
 	"GodepVersion": "v79",
 	"Packages": [

@@ -11,9 +11,9 @@ description: |-
   then it archives the project by calling:
 
   - `ionic cordova "build" "--debug|--release" "--device|--emulator" "<platform>" "--buildConfig=$BITRISE_CORDOVA_BUILD_CONFIGURATION"`
-website: https://github.com/bitrise-community/steps-ionic-archive
-source_code_url: https://github.com/bitrise-community/steps-ionic-archive
-support_url: https://github.com/bitrise-community/steps-ionic-archive/issues
+website: https://github.com/stevengunneweg/steps-ionic-archive
+source_code_url: https://github.com/stevengunneweg/steps-ionic-archive
+support_url: https://github.com/stevengunneweg/steps-ionic-archive/issues
 project_type_tags:
 - ionic
 type_tags:
@@ -24,7 +24,7 @@ deps:
   - name: gradle
 toolkit:
   go:
-    package_name: github.com/bitrise-community/steps-ionic-archive
+    package_name: github.com/stevengunneweg/steps-ionic-archive
 inputs:
   - platform: "ios,android"
     opts:
@@ -85,7 +85,7 @@ inputs:
       title: "Ionic password"
       description: |-
         Use `Ionic username` and `Ionic password` to login with ioni-cli.
-  - ionic_version: 
+  - ionic_version:
     opts:
       title: "Ionic version"
       description: |-
@@ -93,7 +93,7 @@ inputs:
 
         If value is set to `latest`, the step will update to the latest ionic version.
         Leave this input empty to use the preinstalled ionic version.
-  - cordova_version: 
+  - cordova_version:
     opts:
       title: "Cordova version"
       description: |-
@@ -101,7 +101,7 @@ inputs:
 
         If value is set to `latest`, the step will update to the latest cordova version.
         Leave this input empty to use the preinstalled cordova version.
-  - cordova_ios_version: 
+  - cordova_ios_version:
     opts:
       title: "iOS version"
       description: |-
@@ -116,7 +116,7 @@ inputs:
         - latest - The step will update to the latest cordova-ios version `ionic cordova platform add ios@latest`.
 
         - empty - Uses the pinned cordova-ios version.
-  - cordova_android_version: 
+  - cordova_android_version:
     opts:
       title: "Android version"
       description: |-

@@ -145,7 +145,7 @@ workflows:
             export CI=true
 
             releaseman create \
-              --version $STEP_VERSION 
+              --version $STEP_VERSION
 
   # ----------------------------------------------------------------
   # --- workflows to Share this step into a Step Library
@@ -164,7 +164,7 @@ workflows:
       - MY_STEPLIB_REPO_FORK_GIT_URL: $MY_STEPLIB_REPO_FORK_GIT_URL
       - STEP_ID_IN_STEPLIB: ionic-archive
       - STEP_GIT_VERION_TAG_TO_SHARE: $STEP_VERSION
-      - STEP_GIT_CLONE_URL: https://github.com/bitrise-community/steps-ionic-archive.git
+      - STEP_GIT_CLONE_URL: https://github.com/stevengunneweg/steps-ionic-archive.git
     description: |-
       If this is the first time you try to share a Step you should
       first call: $ bitrise share
