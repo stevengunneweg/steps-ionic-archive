@@ -8,6 +8,7 @@ import (
 	"reflect"
 	"regexp"
 	"strings"
+	"io/ioutil"
 
 	"github.com/bitrise-io/go-utils/colorstring"
 	"github.com/bitrise-io/go-utils/command"
@@ -442,20 +443,20 @@ func main() {
 		propertyFileDir := filepath.Join(workDir, "platforms", "android", "project.properties")
 		input, err := ioutil.ReadFile(propertyFileDir)
 		if err != nil {
-			log.Fatalln(err)
+			fail("command failed, error: %s", err)
 		}
 
 		lines := strings.Split(string(input), "\n")
 
 		for i, line := range lines {
 			if strings.Contains(line, "analytics:+") {
-				lines[i] = Replace(lines[i], "analytics:+", "analytics:9.0.0", 1)
+				lines[i] = strings.Replace(lines[i], "analytics:+", "analytics:9.0.0", 1)
 			}
 		}
 		output := strings.Join(lines, "\n")
 		err = ioutil.WriteFile(propertyFileDir, []byte(output), 0644)
 		if err != nil {
-			log.Fatalln(err)
+			fail("command failed, error: %s", err)
 		}
 	}
 
