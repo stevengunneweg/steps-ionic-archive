@@ -438,6 +438,28 @@ func main() {
 	}
 
 	{
+		// Replace in file
+		propertyFileDir := filepath.Join(workDir, "platforms", "android", "project.properties")
+		input, err := ioutil.ReadFile(propertyFileDir)
+		if err != nil {
+			log.Fatalln(err)
+		}
+
+		lines := strings.Split(string(input), "\n")
+
+		for i, line := range lines {
+			if strings.Contains(line, "analytics:+") {
+				lines[i] = Replace(lines[i], "analytics:+", "analytics:9.0.0", 1)
+			}
+		}
+		output := strings.Join(lines, "\n")
+		err = ioutil.WriteFile(propertyFileDir, []byte(output), 0644)
+		if err != nil {
+			log.Fatalln(err)
+		}
+	}
+
+	{
 		// build
 		options := []string{}
 		if configs.Options != "" {
