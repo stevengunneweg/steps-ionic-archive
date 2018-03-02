@@ -442,21 +442,21 @@ func main() {
 		// Replace in file
 		propertyFileDir := filepath.Join(workDir, "platforms", "android", "project.properties")
 		input, err := ioutil.ReadFile(propertyFileDir)
-		if err != nil {
-			fail("command failed, error: %s", err)
-		}
 
-		lines := strings.Split(string(input), "\n")
+		// if file not found (i.e. for iOS build), continue to next action
+		if err == nil {
+			lines := strings.Split(string(input), "\n")
 
-		for i, line := range lines {
-			if strings.Contains(line, "analytics:+") {
-				lines[i] = strings.Replace(lines[i], "analytics:+", "analytics:9.0.0", 1)
+			for i, line := range lines {
+				if strings.Contains(line, "analytics:+") {
+					lines[i] = strings.Replace(lines[i], "analytics:+", "analytics:9.0.0", 1)
+				}
 			}
-		}
-		output := strings.Join(lines, "\n")
-		err = ioutil.WriteFile(propertyFileDir, []byte(output), 0644)
-		if err != nil {
-			fail("command failed, error: %s", err)
+			output := strings.Join(lines, "\n")
+			err = ioutil.WriteFile(propertyFileDir, []byte(output), 0644)
+			if err != nil {
+				fail("command failed, error: %s", err)
+			}
 		}
 	}
 
