@@ -1,3 +1,10 @@
+### NOTES
+
+This is a fork of the original step to fix an issue with Android build.
+
+After adding the Android platform, the `play-services-analytics` library version is changed from `+` to `9.0.0`.
+This prevents an error further on in the build process.
+
 # Ionic Archive
 
 Archives your Ionic project
