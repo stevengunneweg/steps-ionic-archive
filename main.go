@@ -419,6 +419,10 @@ func main() {
 			cmd.SetStdout(os.Stdout).SetStderr(os.Stderr).SetStdin(strings.NewReader("y"))
 
 			log.Donef("$ %s", cmd.PrintableCommandArgs())
+
+			if err := cmd.Run(); err != nil {
+				fail("command failed, error: %s", err)
+			}
 		}
 	}
 
