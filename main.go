@@ -409,9 +409,8 @@ func main() {
 
 	{
 		// Build resources if they don't exist yet
-		propertyDir := filepath.Join(workDir, "resources", "android")
+		propertyDir := filepath.Join(workDir, "resources", "android", "icon", "drawable-hdpi-icon.png")
 		if _, err := os.Stat(propertyDir); os.IsNotExist(err) {
-			// path/to/whatever does not exist
 			cmdArgs := []string{"ionic"}
 			cmdArgs = append(cmdArgs, "cordova")
 			cmdArgs = append(cmdArgs, "resources")
