@@ -439,6 +439,22 @@ func main() {
 	}
 
 	{
+		// Build resources if they don't exist yet
+		propertyDir := filepath.Join(workDir, "resources", "android")
+		if _, err := os.Stat(propertyDir); os.IsNotExist(err) {
+			// path/to/whatever does not exist
+			cmdArgs := []string{"ionic"}
+			cmdArgs = append(cmdArgs, "cordova")
+			cmdArgs = append(cmdArgs, "resources")
+
+			cmd := command.New(cmdArgs[0], cmdArgs[1:]...)
+			cmd.SetStdout(os.Stdout).SetStderr(os.Stderr).SetStdin(strings.NewReader("y"))
+
+			log.Donef("$ %s", cmd.PrintableCommandArgs())
+		}
+	}
+
+	{
 		// Replace in file
 		propertyFileDir := filepath.Join(workDir, "platforms", "android", "project.properties")
 		input, err := ioutil.ReadFile(propertyFileDir)
