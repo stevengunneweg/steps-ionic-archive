@@ -75,6 +75,11 @@ inputs:
         - `--browserify`
 
         `ionic cordova build [OTHER_PARAMS] [options]`
+  - google_services_version:
+    opts:
+      title: "Google services version"
+      description: |-
+        Version to use in project.properties
   - ionic_username:
     opts:
       title: "Ionic username"

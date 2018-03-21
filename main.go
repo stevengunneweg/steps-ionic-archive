@@ -53,6 +53,8 @@ type ConfigsModel struct {
 
 	WorkDir   string
 	DeployDir string
+
+	GoogleServicesVersion string
 }
 
 func createConfigsModelFromEnvs() ConfigsModel {
@@ -73,6 +75,8 @@ func createConfigsModelFromEnvs() ConfigsModel {
 
 		WorkDir:   os.Getenv("workdir"),
 		DeployDir: os.Getenv("BITRISE_DEPLOY_DIR"),
+
+		GoogleServicesVersion: os.Getenv("google_services_version"),
 	}
 }
 
@@ -94,6 +98,8 @@ func (configs ConfigsModel) print() {
 
 	log.Printf("- WorkDir: %s", configs.WorkDir)
 	log.Printf("- DeployDir: %s", configs.DeployDir)
+
+	log.Printf("- GoogleServicesVersion: %s", configs.GoogleServicesVersion)
 }
 
 func (configs ConfigsModel) validate() error {
@@ -468,7 +474,10 @@ func main() {
 
 			for i, line := range lines {
 				if strings.Contains(line, ":+") {
-					lines[i] = strings.Replace(lines[i], ":+", ":9.0.0", 1)
+					if configs.GoogleServicesVersion == "" {
+						configs.GoogleServicesVersion = "9.0.0"
+					}
+					lines[i] = strings.Replace(lines[i], ":+", ":" + configs.GoogleServicesVersion, 1)
 				}
 			}
 			output := strings.Join(lines, "\n")
