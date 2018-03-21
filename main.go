@@ -467,8 +467,8 @@ func main() {
 			lines := strings.Split(string(input), "\n")
 
 			for i, line := range lines {
-				if strings.Contains(line, "analytics:+") {
-					lines[i] = strings.Replace(lines[i], "analytics:+", "analytics:9.0.0", 1)
+				if strings.Contains(line, ":+") {
+					lines[i] = strings.Replace(lines[i], ":+", ":9.0.0", 1)
 				}
 			}
 			output := strings.Join(lines, "\n")
